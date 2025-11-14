@@ -46,7 +46,7 @@ An intelligent, conversational AI Sales Development Representative that leverage
 
 ---
 
-## 📐 Architecture & Approach
+## Architecture & Approach
 
 ### Design Philosophy
 
@@ -129,7 +129,7 @@ Uses browser `localStorage` for session management:
 
 ---
 
-## 🎯 Notable Challenges & Solutions
+## Notable Challenges & Solutions
 
 ### Challenge 1: Time Constraints & Feature Prioritization
 
