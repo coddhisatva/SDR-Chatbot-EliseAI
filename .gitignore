@@ -1,0 +1,38 @@
+__pycache__/
+
+# SQLite database
+database/data/*
+!database/data/.gitkeep
+
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.directory
+
+# Editor directories and files
+.idea
+.vscode/*
+!.vscode/extensions.json
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+.yarn-integrity
+.pnp.*
+.npm
+logs
+*.log
+
+.env
+backend/.env

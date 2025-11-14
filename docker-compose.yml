@@ -1,0 +1,43 @@
+version: '3'
+services:
+  # Database service
+  sqlite:
+    image: keinos/sqlite3:latest
+    container_name: sqlite-practical
+    volumes:
+      - ./database/data:/data       # Mount local data directory
+      - ./database/init:/init       # Mount initialization scripts
+    command: /bin/sh -c "[ -f /data/practical.db ] || (sqlite3 /data/practical.db < /init/init.sql && chmod 666 /data/practical.db)"
+    restart: "no"          # Container stops after initialization
+  
+  # Backend service
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: backend-practical
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+      - ./database/data:/data    # Mount database directory directly
+      - ./articles:/app/articles  # Mount articles directory
+    env_file:
+      - ./backend/.env
+    depends_on:
+      - sqlite
+    restart: always
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: frontend-practical
+    ports:
+      - "3000:3000" 
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+    restart: always
